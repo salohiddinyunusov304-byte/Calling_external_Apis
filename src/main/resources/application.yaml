@@ -1,5 +1,6 @@
 server:
   port: 8080
+valyuta-course: https://cbu.uz/uz/arkhiv-kursov-valyut/json/
 spring:
   application:
     name: calling_external_api
@@ -15,4 +16,3 @@ spring:
     console:
       enabled: true
       path: /h2-console
-valyuta-course: https://cbu:uz/uz/arkhiv-kursov-valyut/json

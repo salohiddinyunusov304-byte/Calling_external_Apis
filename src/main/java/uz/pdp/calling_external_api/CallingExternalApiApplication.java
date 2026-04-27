@@ -10,6 +10,9 @@ import io.swagger.v3.oas.models.OpenAPI;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.http.HttpHeaders;
 
 import java.util.List;
 
@@ -68,5 +71,12 @@ public class CallingExternalApiApplication {
                                 .url("http://localhost:9090")
                                 .description("Test Server")
                 ));
+    }
+
+    @Bean(name = "valyutaClient")
+    public WebClient valyutaClient() {
+        return WebClient.builder()
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .build();
     }
 }
