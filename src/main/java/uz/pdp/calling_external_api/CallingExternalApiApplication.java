@@ -9,6 +9,8 @@ import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -38,7 +40,8 @@ import java.util.List;
                 )
         }
 )
-
+@ConfigurationPropertiesScan
+@EnableFeignClients
 public class CallingExternalApiApplication {
 
     public static void main(String[] args) {
