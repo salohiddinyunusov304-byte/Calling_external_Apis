@@ -22,7 +22,6 @@ public class PostController {
 
     @GetMapping("/findById/{id}")
     public PostResponse findById(@PathVariable Integer id) {
-//        throw new RuntimeException();
         return postService.findById(id);
     }
 

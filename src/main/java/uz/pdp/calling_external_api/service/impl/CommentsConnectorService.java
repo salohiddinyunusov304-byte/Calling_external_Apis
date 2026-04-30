@@ -8,6 +8,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import uz.pdp.calling_external_api.exception.CommentServerException;
 import uz.pdp.calling_external_api.payload.CommentCreator;
 import uz.pdp.calling_external_api.payload.CommentResponse;
 import uz.pdp.calling_external_api.properties.CommentServerProperties;
@@ -26,7 +27,7 @@ public class CommentsConnectorService {
                 .get()
                 .uri(commentServerProperties.getCommentByPostId(), postId)
                 .retrieve()
-                .onStatus(HttpStatusCode::is5xxServerError, response -> Mono.error(new RuntimeException("Server error :: From Comment Server")))
+                .onStatus(HttpStatusCode::is5xxServerError, response -> Mono.error(new CommentServerException("Server error :: From Comment Server")))
                 .bodyToMono(new ParameterizedTypeReference<List<CommentResponse>>() {})
                 .block();
     }
