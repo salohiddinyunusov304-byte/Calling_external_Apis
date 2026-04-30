@@ -18,5 +18,6 @@ spring:
       path: /h2-console
 comment-server:
   basu-url: http://localhost:7070
-  get-comment-by-post-id: /api/comments/findByPostId/{0}
-  create: ${comment-server.basu-url}/api/comments/create
+  get-comment-by-post-id: /api/comments/findByPostId/{postId}
+  create: /api/comments/create
+#  create: ${comment-server.basu-url}/api/comments/create
