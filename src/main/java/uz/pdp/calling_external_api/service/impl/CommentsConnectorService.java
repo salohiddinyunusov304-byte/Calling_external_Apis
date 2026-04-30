@@ -17,7 +17,7 @@ import org.springframework.http.HttpHeaders;
 @Service
 @RequiredArgsConstructor
 public class CommentsConnectorService {
-    private final RestTemplate restTemplate;
+//    private final RestTemplate restTemplate;
     private final CommentServerProperties commentServerProperties;
 
     public CommentResponse createComment(CommentCreator creator) {
@@ -26,18 +26,28 @@ public class CommentsConnectorService {
         headers.setBasicAuth("admin", "123");
         HttpEntity http = new HttpEntity<>(creator, headers);
 
-        try {
-            ResponseEntity<CommentResponse> exchange = restTemplate.exchange(
-                    commentServerProperties.create(),
-                    HttpMethod.POST,
-                    http,
-                    new ParameterizedTypeReference<>() {
-                    }
-            );
-            return exchange.getBody();
-        } catch (ResourceAccessException e) {
-            e.printStackTrace();
-        }
+
         return null;
     }
+
+//    public CommentResponse createComment(CommentCreator creator) {
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add(HttpHeaders.CONTENT_TYPE, "application/json");
+//        headers.setBasicAuth("admin", "123");
+//        HttpEntity http = new HttpEntity<>(creator, headers);
+//
+//        try {
+//            ResponseEntity<CommentResponse> exchange = restTemplate.exchange(
+//                    commentServerProperties.create(),
+//                    HttpMethod.POST,
+//                    http,
+//                    new ParameterizedTypeReference<>() {
+//                    }
+//            );
+//            return exchange.getBody();
+//        } catch (ResourceAccessException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }
