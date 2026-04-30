@@ -1,5 +1,6 @@
 package uz.pdp.calling_external_api.service;
 
+import uz.pdp.calling_external_api.payload.BaseResponse;
 import uz.pdp.calling_external_api.payload.PostCreator;
 import uz.pdp.calling_external_api.payload.PostResponse;
 import uz.pdp.calling_external_api.payload.PostResponseWithComments;

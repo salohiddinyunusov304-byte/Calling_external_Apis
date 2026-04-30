@@ -2,6 +2,7 @@ package uz.pdp.calling_external_api.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import uz.pdp.calling_external_api.payload.BaseResponse;
 import uz.pdp.calling_external_api.payload.PostCreator;
 import uz.pdp.calling_external_api.payload.PostResponse;
 import uz.pdp.calling_external_api.payload.PostResponseWithComments;
@@ -23,8 +24,9 @@ public class PostController {
         return postService.findById(id);
     }
 
-    @GetMapping("/findById/{id}/comment")
-    public PostResponseWithComments findByIdWithComments(@PathVariable Integer id) {
-        return postService.findByIdWithComments(id);
+    @GetMapping("/findByIdWithComments/{id}")
+    public BaseResponse<PostResponseWithComments> findByIdWithComments(@PathVariable Integer id) {
+        PostResponseWithComments response = postService.findByIdWithComments(id);
+        return BaseResponse.ok(response);
     }
 }
